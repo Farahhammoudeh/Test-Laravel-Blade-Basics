@@ -19,14 +19,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($users as $user)
+                            @forelse ($users as $user)
                             <tr class="{{ $loop->even ? 'bg-red-100' : '' }}">
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td class="{{ $loop->first ? 'font-bold' : '' }}">{{ $user->email }}</td>
                                 <td>{{ $user->created_at }}</td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="4">No content</td>
+                            </tr>
+                        @endforelse
                         </tbody>
                     </table>
                 </div>
